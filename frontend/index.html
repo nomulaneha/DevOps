@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps CI/CD Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>DevOps CI/CD Dashboard</h1>
+    <p id="stats"></p>
+    <canvas id="myChart" width="300" height="300"></canvas>
+
+    <script>
+        async function loadMetrics() {
+            const res = await fetch("http://localhost:5000/metrics");
+            const data = await res.json();
+            document.getElementById("stats").innerText = 
+                `Total: ${data.total}, Success: ${data.success}, Failure: ${data.failure}, Avg Time: ${data.avgDuration} min`;
+            
+            new Chart(document.getElementById("myChart"), {
+                type: 'pie',
+                data: {
+                    labels: ["Success", "Failure"],
+                    datasets: [{
+                        data: [data.success, data.failure]
+                    }]
+                }
+            });
+        }
+        loadMetrics();
+    </script>
+</body>
+</html>
