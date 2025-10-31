@@ -1,33 +1,72 @@
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>DevOps CI/CD Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <h1>DevOps CI/CD Dashboard</h1>
-    <p id="stats"></p>
-    <canvas id="myChart" width="300" height="300"></canvas>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Dashboard</title>
 
-    <script>
-        async function loadMetrics() {
-            const res = await fetch("http://localhost:5000/metrics");
-            const data = await res.json();
-            document.getElementById("stats").innerText = 
-                `Total: ${data.total}, Success: ${data.success}, Failure: ${data.failure}, Avg Time: ${data.avgDuration} min`;
-            
-            new Chart(document.getElementById("myChart"), {
-                type: 'pie',
-                data: {
-                    labels: ["Success", "Failure"],
-                    datasets: [{
-                        data: [data.success, data.failure]
-                    }]
-                }
-            });
-        }
-        loadMetrics();
-    </script>
+    <!-- ✅ Add your CSS here -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-mode">
+<h1>DevOps Dashboard</h1>
+<div class="controls">
+<button id="refreshBtn" title="Refresh now">⟳ Refresh</button>
+<label class="switch">
+<input id="darkModeToggle" type="checkbox">
+<span class="slider"></span>
+</label>
+</div>
+<div class="main-container">
+<main>
+<section class="cards">
+<div class="card">
+<h3>Total Builds</h3>
+<p id="buildsCount">—</p>
+</div>
+<div class="card">
+<h3>Success Rate</h3>
+<p id="successRate">—%</p>
+</div>
+<div class="card">
+<h3>Failed Builds</h3>
+<p id="failedBuilds">—</p>
+</div>
+<div class="card">
+<h3>Avg Build Time</h3>
+<p id="avgBuildTime">—</p>
+</div>
+</section>
+
+<section class="charts">
+<div class="chart-card">
+<h4>Builds Over Time</h4>
+<canvas id="lineChart"></canvas>
+</div>
+<div class="chart-card">
+<h4>Pass vs Fail</h4>
+<canvas id="doughnutChart"></canvas>
+</div>
+<div class="chart-card">
+<h4>Code Coverage (%)</h4>
+<canvas id="barChart"></canvas>
+</div>
+</section>
+
+<section class="status">
+<h4>Deployment Status</h4>
+<p id="deploymentStatus">—</p>
+</section>
+</main>
+</div>
+<footer>
+<small>Data is simulated for demo purposes • Auto-refresh every 10s</small>
+</footer>
+
+<!-- JS files must be before closing body -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>

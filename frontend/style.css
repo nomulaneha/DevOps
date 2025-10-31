@@ -1,0 +1,133 @@
+/* Global Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f4f4f4;
+    color: #222;
+}
+
+.main-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* Metric Cards Layout */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Charts section */
+.charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.chart-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* 🔥 Reduce canvas/chart size here */
+.chart-card canvas {
+    width: 100% !important;
+    height: 220px !important; /* Adjust chart height */
+}
+
+/* Deployment status */
+/* Deployment Status */
+.status {
+    background: #fff;
+    padding: 20px;
+    margin: 25px auto;
+    border-radius: 12px;
+    width: 60%;
+    text-align: center;
+    font-size: 22px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.08);
+}
+
+.status p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ✅ Success Status Text */
+.status-success {
+    color: #28a745; /* green */
+}
+
+/* ❌ Failed Status Text */
+.status-failed {
+    color: #d9534f; /* red */
+}
+
+/* Dark mode fix */
+body.dark-mode .status {
+    background: #1b1b1b;
+    color: #eee;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 12px;
+    color: #666;
+}
+/* Default light theme */
+body {
+    background: #f5f7fa;
+    color: #111;
+    transition: 0.3s ease-in-out;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: #111;
+    color: #f2f2f2;
+}
+
+body.dark-mode .card,
+body.dark-mode .chart-card {
+    background: #1b1b1b;
+    color: #eee;
+}
+canvas {
+    width: 100% !important;
+    height: 240px !important;
+}
