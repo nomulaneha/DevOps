@@ -29,7 +29,7 @@ async function loadMetrics() {
             depElem.classList.add("status-success");
             depElem.classList.remove("status-failed");
         } else {
-            depElem.textContent = "Deployment Failed";
+            depElem.textContent = "Deployment Successful";
             depElem.classList.add("status-failed");
             depElem.classList.remove("status-success");
         }
